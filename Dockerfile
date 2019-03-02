@@ -14,7 +14,6 @@ RUN set -ex; \
     \
     apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
-        imap-dev \
         krb5-dev \
         libressl-dev \
         samba-dev \
@@ -22,11 +21,9 @@ RUN set -ex; \
         gmp-dev \
     ; \
     \
-    docker-php-ext-configure imap --with-kerberos --with-imap-ssl; \
     docker-php-ext-install \
         bz2 \
         gmp \
-        imap \
     ; \
     pecl install smbclient; \
     docker-php-ext-enable smbclient; \
